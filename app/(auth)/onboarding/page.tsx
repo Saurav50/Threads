@@ -1,11 +1,17 @@
 import Profile from "@/components/forms/Profile";
 import React from "react";
 import { currentUser } from "@clerk/nextjs/server";
+import { fetchUser } from "@/lib/actions/user.action";
+import { redirect } from "next/navigation";
 
 const page = async () => {
   const user = await currentUser();
   // fetch user data from your mongo databse
-  const userInfo = {};
+  const userInfo = await fetchUser(user?.id || "");
+  if (userInfo && userInfo.onBoarded) {
+    redirect("/");
+  }
+
   const userData = {
     id: user?.id,
     objectId: userInfo?._id,
