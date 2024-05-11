@@ -36,7 +36,7 @@ const CreateThread = ({ userId }: { userId: string }) => {
     await createThreadDB({
       text: values.thread,
       author: userId,
-      communityId: organization ? organization.id : null,
+      communityId: organization ? JSON.stringify(organization.id) : null,
       path: pathname,
     });
     router.push("/");

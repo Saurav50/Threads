@@ -5,6 +5,7 @@ import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
 import path from "path";
 import { useOrganization } from "@clerk/nextjs";
+import Community from "../models/community.model";
 
 export const createThreadDB = async ({
   text,
@@ -20,10 +21,14 @@ export const createThreadDB = async ({
   connectToDB();
 
   try {
+    const communityIdObject = await Community.findOne(
+      { id: communityId },
+      { _id: 1 }
+    );
     const createdThread = await Thread.create({
       text,
       author,
-      community: null,
+      community: communityIdObject,
     });
     // update user model
     await User.findByIdAndUpdate(author, {
