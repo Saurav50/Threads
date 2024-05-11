@@ -23,7 +23,7 @@ export const createThreadDB = async ({
     const createdThread = await Thread.create({
       text,
       author,
-      community: communityId,
+      community: null,
     });
     // update user model
     await User.findByIdAndUpdate(author, {
