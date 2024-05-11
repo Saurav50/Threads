@@ -33,11 +33,11 @@ const CreateThread = ({ userId }: { userId: string }) => {
     },
   });
   const onSubmit = async (values: z.infer<typeof threadValidation>) => {
-    console.log(organization);
+    console.log(organization?.id);
     await createThreadDB({
       text: values.thread,
       author: userId,
-      communityId: organization ? JSON.stringify(organization.id) : null,
+      communityId: organization ? organization.id : null,
       path: pathname,
     });
     router.push("/");
