@@ -18,11 +18,12 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { threadValidation } from "@/lib/validations/thread";
 import { createThreadDB } from "@/lib/actions/thread.action";
-// Initialize Clerk with your Clerk publishable key
+import { useOrganization } from "@clerk/nextjs";
 
 const CreateThread = ({ userId }: { userId: string }) => {
   const pathname = usePathname();
   const router = useRouter();
+  const { organization } = useOrganization();
 
   const form = useForm({
     resolver: zodResolver(threadValidation),
@@ -35,7 +36,7 @@ const CreateThread = ({ userId }: { userId: string }) => {
     await createThreadDB({
       text: values.thread,
       author: userId,
-      communityId: null,
+      communityId: organization ? organization.id : null,
       path: pathname,
     });
     router.push("/");
