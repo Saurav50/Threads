@@ -4,6 +4,7 @@ import Thread from "../models/thread.model";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
 import path from "path";
+import { useOrganization } from "@clerk/nextjs";
 
 export const createThreadDB = async ({
   text,
@@ -17,6 +18,7 @@ export const createThreadDB = async ({
   path: string;
 }) => {
   connectToDB();
+
   try {
     const createdThread = await Thread.create({
       text,

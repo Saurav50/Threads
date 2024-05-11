@@ -12,7 +12,7 @@ const page = async () => {
     searchText: "s",
     pageSize: 30,
   });
-  console.log(allUsers);
+
   return (
     <div>
       <h1 className="text-light-1 text-heading3-bold"> Search User</h1>

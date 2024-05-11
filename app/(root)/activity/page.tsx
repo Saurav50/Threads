@@ -13,7 +13,7 @@ const page = async () => {
   if (!userData?.onBoarded) redirect("/onboarding");
   //   get activity of ur account
   const activities = await getActivity(userData._id);
-  console.log(activities);
+
   return (
     <section>
       <h1 className="head-text">Activity</h1>

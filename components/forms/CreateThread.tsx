@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,10 +18,12 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { threadValidation } from "@/lib/validations/thread";
 import { createThreadDB } from "@/lib/actions/thread.action";
+// Initialize Clerk with your Clerk publishable key
 
 const CreateThread = ({ userId }: { userId: string }) => {
   const pathname = usePathname();
   const router = useRouter();
+
   const form = useForm({
     resolver: zodResolver(threadValidation),
     defaultValues: {

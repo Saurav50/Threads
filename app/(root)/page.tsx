@@ -1,12 +1,18 @@
 import ThreadCard from "@/components/cards/ThreadCard";
 import { getThreads } from "@/lib/actions/thread.action";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  useOrganization,
+  UserButton,
+} from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
   const user = await currentUser();
   const response = await getThreads(1, 30);
-  console.log(response);
+
   return (
     <>
       <h1 className="head-text text-left text-white">Home</h1>

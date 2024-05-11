@@ -9,7 +9,7 @@ import ThreadTabs from "@/components/shared/ThreadTabs";
 const page = async ({ params }: { params: { id: string } }) => {
   const toViewUserData = await fetchUser(params.id);
   const loggedInUser = await currentUser();
-  console.log(toViewUserData);
+
   return (
     <div className="text-light-1">
       <UserProfileHeader
