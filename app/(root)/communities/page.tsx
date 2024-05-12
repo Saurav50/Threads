@@ -13,7 +13,7 @@ const page = async () => {
   return (
     <div>
       <h1 className="text-light-1 text-heading3-bold"> Search community</h1>
-      <div className="flex gap-8 mt-10">
+      <div className="flex flex-wrap gap-8 mt-10">
         {allCommunities.communities.length < 1 ? (
           <p>No community found!</p>
         ) : (
