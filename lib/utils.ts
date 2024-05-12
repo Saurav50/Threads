@@ -12,20 +12,21 @@ export function isBase64Image(imageData: string) {
   return base64Regex.test(imageData);
 }
 
-// created by chatgpt
 export function formatDateString(dateString: string) {
+  const date = new Date(dateString);
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
     month: "short",
     day: "numeric",
+    timeZone: "UTC",
   };
 
-  const date = new Date(dateString);
-  const formattedDate = date.toLocaleDateString(undefined, options);
-
-  const time = date.toLocaleTimeString([], {
+  const formattedDate = date.toLocaleDateString("en-IN", options);
+  const time = date.toLocaleTimeString("en-IN", {
     hour: "numeric",
     minute: "2-digit",
+
+    timeZone: "Asia/Kolkata", // Indian Standard Time
   });
 
   return `${time} - ${formattedDate}`;
