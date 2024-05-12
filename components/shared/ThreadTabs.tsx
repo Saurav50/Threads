@@ -16,6 +16,7 @@ const ThreadTabs = async ({
   let data;
   if (personType === "USER") data = await userThreads(userId);
   if (personType === "COMMUNITY") data = await fetchCommunityPosts(userId);
+  console.log(data);
 
   return (
     <section className="mt-6 flex flex-col gap-8">

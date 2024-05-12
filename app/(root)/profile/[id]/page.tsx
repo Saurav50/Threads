@@ -47,6 +47,7 @@ const page = async ({ params }: { params: { id: string } }) => {
               <ThreadTabs
                 userId={toViewUserData.id}
                 loggedInUserId={loggedInUser?.id || ""}
+                personType="USER"
               />
             </TabsContent>
           ))}

@@ -6,6 +6,7 @@ import { connectToDB } from "../mongoose";
 import Thread from "../models/thread.model";
 import path from "path";
 import { SortOrder } from "mongoose";
+import Community from "../models/community.model";
 
 export const updateUser = async ({
   userId,
@@ -75,6 +76,10 @@ export const userThreads = async (userId: string) => {
             model: User,
             select: "name image id",
           },
+        },
+        {
+          path: "community",
+          model: Community,
         },
       ],
     });
