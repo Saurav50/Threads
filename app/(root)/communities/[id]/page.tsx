@@ -70,6 +70,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             <ThreadTabs
               userId={toCommunityDetail._id}
               loggedInUserId={loggedInUser?.id || ""}
+              personType="COMMUNITY"
             />
           </TabsContent>
         </Tabs>

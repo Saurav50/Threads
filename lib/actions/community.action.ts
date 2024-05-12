@@ -108,12 +108,12 @@ export async function fetchCommunityPosts(id: string) {
 }
 
 export async function fetchCommunities({
-  searchString = "",
+  searchText = "",
   pageNumber = 1,
   pageSize = 20,
   sortBy = "desc",
 }: {
-  searchString?: string;
+  searchText?: string;
   pageNumber?: number;
   pageSize?: number;
   sortBy?: SortOrder;
@@ -125,13 +125,13 @@ export async function fetchCommunities({
     const skipAmount = (pageNumber - 1) * pageSize;
 
     // Create a case-insensitive regular expression for the provided search string.
-    const regex = new RegExp(searchString, "i");
+    const regex = new RegExp(searchText, "i");
 
     // Create an initial query object to filter communities.
     const query: FilterQuery<typeof Community> = {};
 
     // If the search string is not empty, add the $or operator to match either username or name fields.
-    if (searchString.trim() !== "") {
+    if (searchText.trim() !== "") {
       query.$or = [
         { username: { $regex: regex } },
         { name: { $regex: regex } },

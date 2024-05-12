@@ -20,9 +20,7 @@ const UserCard = ({
   return (
     <article className="user-card">
       <div className="user-card_avatar">
-        <div className="flex flex-col items-center "></div>
         <div className="relative h-14 w-14">
-          {" "}
           <Image
             src={userImage}
             alt="user_img"

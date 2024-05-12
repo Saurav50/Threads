@@ -9,7 +9,7 @@ const page = async () => {
     userId: user ? user.id : "",
     sortBy: "desc",
     pageNumber: 1,
-    searchText: "s",
+    searchText: "",
     pageSize: 30,
   });
 

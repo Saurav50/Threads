@@ -22,7 +22,6 @@ import { updateUser } from "@/lib/actions/user.action";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { LoadingSpinner } from "../ui/LoadingSpinner";
-import { currentUser } from "@clerk/nextjs/server";
 
 interface Props {
   user: {
@@ -37,7 +36,6 @@ interface Props {
 }
 const Profile = ({ user, btnTitle }: Props) => {
   const [loading, setLoading] = useState(false);
-
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
   const pathname = usePathname();
@@ -62,7 +60,6 @@ const Profile = ({ user, btnTitle }: Props) => {
       if (imgRes && imgRes[0].url) {
         values.profileImage = imgRes[0].url;
       }
-      // console.log(imgRes);
     }
     // send data to mongodb backend
     await updateUser({

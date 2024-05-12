@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 
 const page = async () => {
   const user = await currentUser();
-  // fetch user data from your mongo databse
+  // fetch user data from your mongo database
   const userInfo = await fetchUser(user?.id || "");
   if (userInfo && userInfo.onBoarded) {
     redirect("/");
