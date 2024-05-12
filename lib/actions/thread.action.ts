@@ -103,7 +103,8 @@ export const fetchThreadById = async (id: string) => {
             },
           },
         ],
-      });
+      })
+      .populate({ path: "community", model: Community });
     return fetchedThread;
   } catch (error: any) {
     console.log(error.message);
