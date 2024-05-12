@@ -34,6 +34,12 @@ export const createThreadDB = async ({
     await User.findByIdAndUpdate(author, {
       $push: { threads: createdThread._id },
     });
+    if (communityIdObject) {
+      // Update Community model
+      await Community.findByIdAndUpdate(communityIdObject, {
+        $push: { threads: createdThread._id },
+      });
+    }
     revalidatePath(path);
   } catch (error: any) {
     console.log(error.message);
@@ -57,7 +63,8 @@ export const getThreads = async (pageNumber = 1, pageSize = 20) => {
           model: User,
           select: "_id name parentId image",
         },
-      });
+      })
+      .populate({ path: "community", model: Community });
     // Count the total number of top-level posts (threads) i.e., threads that are not comments.
     const totalPostsCount = await Thread.countDocuments({
       parentId: { $in: [null, undefined] },

@@ -20,13 +20,17 @@ const UserCard = ({
   return (
     <article className="user-card">
       <div className="user-card_avatar">
-        <Image
-          src={userImage}
-          alt="user_img"
-          height={48}
-          width={48}
-          className="rounded-full object-contain"
-        />
+        <div className="flex flex-col items-center "></div>
+        <div className="relative h-14 w-14">
+          {" "}
+          <Image
+            src={userImage}
+            alt="user_img"
+            fill
+            className="rounded-full object-cover"
+          />
+        </div>
+
         <div className="flex-1">
           <h1 className="text-light-2 text-heading4-medium">{name}</h1>
           <p className="text-gray-1 text-tiny-medium">@{userName}</p>
