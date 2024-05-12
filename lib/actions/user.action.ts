@@ -81,6 +81,7 @@ export const userThreads = async (userId: string) => {
           path: "community",
           model: Community,
         },
+        { path: "likes", model: User, select: "id" },
       ],
     });
   } catch (error: any) {

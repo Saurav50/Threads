@@ -1,7 +1,8 @@
 import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import Heart from "../shared/Heart";
 
 interface Props {
   id: string;
@@ -25,6 +26,7 @@ interface Props {
     };
   }[];
   isComment?: boolean;
+  likes: [{ id: string }];
 }
 const ThreadCard = ({
   id,
@@ -36,7 +38,10 @@ const ThreadCard = ({
   createdAt,
   comments,
   isComment,
+  likes,
 }: Props) => {
+  const isLiked = likes.some((like) => like.id === currentUserId);
+
   return (
     <article
       className={`text-light-1 flex  gap-3 p-5  rounded-md ${
@@ -69,12 +74,17 @@ const ThreadCard = ({
             <span className="text-small-regular text-light-2">{content}</span>
             <div className="mt-5 flex flex-col gap-3.5">
               <div className="flex gap-3">
-                <Image
+                {/* <Image
                   src="/assets/heart-gray.svg"
                   alt="heart"
                   width={24}
                   height={24}
                   className="cursor-pointer object-contain"
+                /> */}
+                <Heart
+                  isLikedByUser={isLiked}
+                  userId={currentUserId}
+                  threadId={id}
                 />
                 <Link href={`/thread/${id}`}>
                   <Image

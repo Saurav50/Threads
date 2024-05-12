@@ -96,6 +96,7 @@ export async function fetchCommunityPosts(id: string) {
           path: "community",
           model: Community,
         },
+        { path: "likes", model: User, select: "id" },
       ],
     });
 

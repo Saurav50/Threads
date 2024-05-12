@@ -1,12 +1,6 @@
 import ThreadCard from "@/components/cards/ThreadCard";
 import { getThreads } from "@/lib/actions/thread.action";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  useOrganization,
-  UserButton,
-} from "@clerk/nextjs";
+
 import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
@@ -31,6 +25,7 @@ export default async function Home() {
               community={thread.community}
               createdAt={thread.createdAt}
               comments={thread.children}
+              likes={thread.likes}
             />
           ))
         )}
