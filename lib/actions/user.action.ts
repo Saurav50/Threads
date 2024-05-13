@@ -143,3 +143,27 @@ export const getActivity = async (userId: string) => {
     console.log(error.message);
   }
 };
+export const getLikeActivity = async (userId: string) => {
+  try {
+    connectToDB();
+    // Get all threads created by the user
+    const userThreads = await Thread.find({ author: userId }).populate({
+      path: "likes",
+      model: User,
+      select: "id image name",
+    });
+
+    // Map each thread to its ID and the array of user IDs who liked it
+    const result = userThreads
+      .filter((thread) => thread.likes.length > 0)
+      .map((thread) => ({
+        threadId: thread._id,
+        likedBy: thread.likes.map((like: any) => like),
+      }));
+
+    return result;
+  } catch (error: any) {
+    console.log(error.message);
+    return [];
+  }
+};
