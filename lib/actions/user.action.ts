@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
 import Thread from "../models/thread.model";
-import path from "path";
+
 import { SortOrder } from "mongoose";
 import Community from "../models/community.model";
 
