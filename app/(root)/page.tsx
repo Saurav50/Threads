@@ -1,5 +1,5 @@
 import ThreadCard from "@/components/cards/ThreadCard";
-import Pagination from "@/components/shared/pagination";
+import Pagination from "@/components/shared/Pagination";
 import { getThreads } from "@/lib/actions/thread.action";
 
 import { currentUser } from "@clerk/nextjs/server";
