@@ -1,11 +1,19 @@
 import ThreadCard from "@/components/cards/ThreadCard";
+import Pagination from "@/components/shared/pagination";
 import { getThreads } from "@/lib/actions/thread.action";
 
 import { currentUser } from "@clerk/nextjs/server";
 
-export default async function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | undefined };
+}) {
   const user = await currentUser();
-  const response = await getThreads(1, 30);
+  const response = await getThreads(
+    searchParams.page ? +searchParams.page : 1,
+    30
+  );
 
   return (
     <>
@@ -29,6 +37,11 @@ export default async function Home() {
             />
           ))
         )}
+        <Pagination
+          path="/"
+          pageNumber={searchParams?.page ? +searchParams.page : 1}
+          isNext={response?.isNext ? response?.isNext : false}
+        />
       </section>
     </>
   );
