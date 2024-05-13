@@ -150,7 +150,7 @@ export const getLikeActivity = async (userId: string) => {
     const userThreads = await Thread.find({ author: userId }).populate({
       path: "likes",
       model: User,
-      select: "id image name",
+      select: "_id id image name",
     });
 
     // Map each thread to its ID and the array of user IDs who liked it
@@ -158,8 +158,11 @@ export const getLikeActivity = async (userId: string) => {
       .filter((thread) => thread.likes.length > 0)
       .map((thread) => ({
         threadId: thread._id,
-        likedBy: thread.likes.map((like: any) => like),
-      }));
+        likedBy: thread.likes
+          .filter((like: any) => like._id.toString() !== userId.toString())
+          .map((like: any) => like),
+      }))
+      .filter((thread) => thread.likedBy.length > 0);
 
     return result;
   } catch (error: any) {
