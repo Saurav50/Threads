@@ -1,4 +1,10 @@
-import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
+import {
+  OrganizationSwitcher,
+  SignInButton,
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+} from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,7 +23,7 @@ const Topbar = () => {
           Thread Verse
         </p>
       </Link>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 text-white">
         <div className="block md:hidden">
           <SignedIn>
             <SignOutButton>
@@ -27,6 +33,20 @@ const Topbar = () => {
             </SignOutButton>
           </SignedIn>
         </div>
+        <SignedOut>
+          <SignInButton>
+            <div className="flex cursor-pointer">
+              <Image
+                src="/assets/login.png"
+                alt="login"
+                width={32}
+                height={32}
+                className="text-white"
+              />
+            </div>
+          </SignInButton>
+        </SignedOut>
+
         <OrganizationSwitcher
           appearance={{
             elements: {
