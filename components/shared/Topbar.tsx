@@ -39,8 +39,8 @@ const Topbar = () => {
               <Image
                 src="/assets/login.png"
                 alt="login"
-                width={32}
-                height={32}
+                width={24}
+                height={24}
                 className="text-white"
               />
             </div>
