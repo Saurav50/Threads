@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 <img width="1439" alt="image" src="https://github.com/Saurav50/Threads/assets/98273408/96669623-f394-47e9-9835-55885a0cf987">
+## <a name="tech-stack">⚙️ Tech Stack</a>
+
+- Next.js
+- MongoDB
+- Shadcn UI
+- TailwindCSS
+- Clerk
+- Webhooks
+- Serverless APIs
+- React Hook Form
+- Zod
+- TypeScript
 
 
 ## Getting Started
